@@ -1,0 +1,548 @@
+/* ===============================
+   ROOT THEME
+================================ */
+:root {
+  --black: #0b0b0b;
+  --white: #ffffff;
+  --gray: #b5b5b5;
+  --border: #222;
+}
+
+/* ===============================
+   RESET & BASE
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===============================
+   HEADER & NAVIGATION
+================================ */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a.active {
+  color: var(--white);
+}
+
+nav a.active::after {
+  width: 100%;
+  opacity: 1;
+}
+
+
+
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  display: block;
+  font-size: 0.90rem;
+  letter-spacing: 3px;
+  color: var(--gray);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  position: relative;
+  font-size: 0.95rem;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: var(--white);
+  transition: 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ===============================
+   HERO (HOME)
+================================ */
+.hero {
+  height: 100vh;
+  padding: 2rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 2rem;
+  min-height: 650px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  max-width: 720px;
+  margin: auto;
+  color: var(--gray);
+  font-size: 1.1rem;
+}
+
+/* ===============================
+   SECTIONS
+================================ */
+section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 120px 2rem 4rem;
+}
+
+section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* ===============================
+   CONTAINER (GLOBAL)
+================================ */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 2rem;
+}
+
+/* ===============================
+   ABOUT SECTION (CENTERED)
+================================ */
+.about-section {
+  padding-top: 145px;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.about-container h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-container p {
+  color: var(--gray);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* ===============================
+   ABOUT SECTION (SHADOW CONTAINER)
+================================ */
+.about-section {
+  padding-top: 145px;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+}
+
+.about-box {
+  max-width: 900px;
+  margin-top: 100px;
+  margin-bottom: 90px;
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4rem 3rem;
+  text-align: center;
+
+  /* Subtle professional shadow */
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.about-box h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-box p {
+  color: var(--gray);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* ===============================
+   IMAGE ZOOM MODAL
+================================ */
+.zoomable-img {
+  cursor: pointer;
+}
+
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.95);
+  touch-action: none;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease;
+  object-fit: contain;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: var(--white);
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  transition: 0.3s;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: var(--gray);
+}
+
+/* ===============================
+   GRID & CARDS
+================================ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-content h3 {
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+
+.card-content p {
+  color: var(--gray);
+  font-size: 0.95rem;
+}
+
+/* ===============================
+   ABOUT PAGE
+================================ */
+.about-text {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  color: var(--gray);
+  font-size: 1.05rem;
+}
+
+/* ===============================
+   CONTACT PAGE
+================================ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.contact-box {
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.contact-box h3 {
+  margin-bottom: 1rem;
+}
+
+.contact-box p {
+  color: var(--gray);
+  margin-bottom: 0.5rem;
+}
+
+iframe {
+  width: 100%;
+  height: 260px;
+  border: none;
+  border-radius: 12px;
+  filter: grayscale(100%);
+}
+
+/* ===============================
+   FOOTER
+================================ */
+footer {
+  border-top: 1px solid var(--border);
+  height: 80px;
+  /* FIXED HEIGHT */
+  display: flex;
+  align-items: center;
+  /* Vertical center */
+  justify-content: center;
+  /* Horizontal center */
+  text-align: center;
+  color: var(--gray);
+  font-size: 0.9rem;
+  padding: 0 1rem;
+  /* Horizontal padding only */
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+
+  /* NAVIGATION */
+  .nav {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+
+  /* HERO */
+  .hero {
+    height: auto;
+    padding-top: 140px;
+    padding-bottom: 4rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 110px 1.2rem 3rem;
+  }
+
+  section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  /* GRID */
+  .grid {
+    gap: 1.5rem;
+  }
+
+  .card img {
+    height: 190px;
+  }
+
+  .card-content {
+    padding: 1.2rem;
+  }
+
+  /* ABOUT */
+  .about-text {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-box {
+    padding: 1.5rem;
+  }
+
+  iframe {
+    height: 220px;
+  }
+
+  .about-section {
+    padding-top: 130px;
+    min-height: auto;
+  }
+
+  .about-container h2 {
+    font-size: 2rem;
+  }
+
+  .about-container p {
+    font-size: 1rem;
+  }
+
+  .about-section {
+    padding-top: 130px;
+  }
+
+  .about-box {
+    padding: 2.5rem 1.5rem;
+    border-radius: 16px;
+    margin-bottom: 10px;
+  }
+
+  .about-box h2 {
+    font-size: 2rem;
+  }
+
+  .about-box p {
+    font-size: 1rem;
+  }
+
+  .logo{
+    text-align: center;
+  }
+
+
+  footer {
+    height: 65px;
+    font-size: 0.85rem;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .logo {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .logo span {
+    font-size: 0.65rem;
+  }
+
+  nav ul {
+    gap: 0.8rem;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+  }
+
+  .card img {
+    height: 170px;
+  }
+
+  footer {
+    height: 65px;
+    font-size: 0.8rem;
+  }
+}
+
+
+.hero p {
+  font-size: 1rem;
+}
